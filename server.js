@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const db = require('./config/db');
-const path = require('path');
+// const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -18,13 +18,13 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projetos', projectRoutes);
 app.use('/api/user', userRoutes);
 
-// Servir frontend
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+// // Servir frontend
+// app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-// Fallback SPA (depois das rotas da API)
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-});
+// // Fallback SPA (depois das rotas da API)
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+// });
 
 const PORT = process.env.PORT;
 if (!PORT) {
